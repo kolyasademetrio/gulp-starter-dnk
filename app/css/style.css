@@ -1,0 +1,257 @@
+/* main variables */
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: "opensans-regular", sans-serif;
+  background-color: #fff;
+  height: 100%;
+  line-height: 1;
+  position: relative;
+  font-size: 12px !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*MAIN*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer,
+header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, main {
+  display: block;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-width: 0px;
+  padding: 0px;
+  margin: 0px;
+}
+
+html {
+  height: 100%;
+  -webkit-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+}
+
+input,
+textarea {
+  color: #333;
+  font-family: "opensans-regular", sans-serif;
+  outline: none;
+  border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  -webkit-appearance: none;
+}
+
+input[type="button"],
+input[type="submit"],
+button {
+  cursor: pointer;
+}
+
+td {
+  margin: 0px;
+  padding: 0px;
+}
+
+form {
+  padding: 0px;
+  margin: 0px;
+}
+
+a {
+  color: #2c87ce;
+  -webkit-transition: all 0.6s ease 0s;
+  -o-transition: all 0.6s ease 0s;
+  transition: all 0.6s ease 0s;
+  text-decoration: none;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a,
+span,
+div,
+button {
+  outline: none !important;
+}
+
+input[type=submit],
+input[type=button],
+button {
+  -webkit-appearance: none;
+  outline: none;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.clearfix:after,
+.wrapper:after,
+.row:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+@font-face {
+  font-family: 'opensans-bold';
+  src: url("../fonts/opensans/bold/opensans-bold.eot");
+  src: url("../fonts/opensans/bold/opensans-bold.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans/bold/opensans-bold.woff2") format("woff2"), url("../fonts/opensans/bold/opensans-bold.woff") format("woff"), url("../fonts/opensans/bold/opensans-bold.ttf") format("truetype"), url("../fonts/opensans/bold/opensans-bold.svg#opensans-bold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'opensans-light';
+  src: url("../fonts/opensans/light/opensans-light.eot");
+  src: url("../fonts/opensans/light/opensans-light.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans/light/opensans-light.woff2") format("woff2"), url("../fonts/opensans/light/opensans-light.woff") format("woff"), url("../fonts/opensans/light/opensans-light.ttf") format("truetype"), url("../fonts/opensans/light/opensans-light.svg#opensans-light") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'opensans-regular';
+  src: url("../fonts/opensans/regular/opensans-regular.eot");
+  src: url("../fonts/opensans/regular/opensans-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans/regular/opensans-regular.woff2") format("woff2"), url("../fonts/opensans/regular/opensans-regular.woff") format("woff"), url("../fonts/opensans/regular/opensans-regular.ttf") format("truetype"), url("../fonts/opensans/regular/opensans-regular.svg#opensans-regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'oswald-bold';
+  src: url("../fonts/oswald/oswald-bold.eot");
+  src: url("../fonts/oswald/oswald-bold.eot?#iefix") format("embedded-opentype"), url("../fonts/oswald/oswald-bold.woff2") format("woff2"), url("../fonts/oswald/oswald-bold.woff") format("woff"), url("../fonts/oswald/oswald-bold.ttf") format("truetype"), url("../fonts/oswald/oswald-bold.svg#oswald-bold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "opensans-regular", sans-serif;
+  font-weight: 400;
+  letter-spacing: 1.05px;
+}
+
+.main-wrapper {
+  padding: 0;
+  min-width: 320px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  min-height: 100%;
+}
+
+.wrapper {
+  min-width: 320px;
+  max-width: 100%;
+  padding: 0;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* titles */
+p {
+  font-size: 12px;
+  line-height: 16px;
+  color: #282828;
+  letter-spacing: normal;
+  padding: 15px 0 15px 0;
+  font-weight: 400;
+  letter-spacing: 1.05px;
+}
+
+h1 {
+  font-size: 24px;
+  line-height: 28px;
+  color: #2c303d;
+  letter-spacing: normal;
+  font-family: "oswald-bold", sans-serif;
+  padding: 15px 0 15px 0;
+  font-weight: 400;
+  letter-spacing: 1.05px;
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 26px;
+  color: #2c303d;
+  letter-spacing: normal;
+  font-family: "oswald-bold", sans-serif;
+  padding: 15px 0 15px 0;
+  font-weight: 400;
+  letter-spacing: 1.05px;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 24px;
+  color: #2c303d;
+  letter-spacing: normal;
+  font-family: "oswald-bold", sans-serif;
+  padding: 15px 0 15px 0;
+  font-weight: 400;
+  letter-spacing: 1.05px;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.lined {
+  text-decoration: line-through;
+}
+
+.header {
+  display: block;
+}
+
+.footer {
+  display: block;
+  outline: 1px solid red;
+}
+
+/*# sourceMappingURL=style.css.map */
