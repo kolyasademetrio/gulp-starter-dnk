@@ -8,11 +8,18 @@ const fileInclude = require('gulp-file-include');
 const htmlbeautify = require('gulp-html-beautify');
 const del = require('del');  // Подключаем библиотеку для удаления файлов и папок
 
+
+const cache = require('gulp-cache');
+const imagemin = require('gulp-imagemin');
+const imageminPngquant = require('imagemin-pngquant');
+const imageminZopfli = require('imagemin-zopfli');
+const imageminMozjpeg = require('imagemin-mozjpeg'); //need to run 'brew install libpng'
+const imageminGiflossy = require('imagemin-giflossy');
+
 //const concat       = require('gulp-concat'), // Подключаем gulp-concat (для конкатенации файлов)
 //const uglify       = require('gulp-uglifyjs'),*/ // Подключаем gulp-uglifyjs (для сжатия JS)
 //const cssnano      = require('gulp-cssnano'),*/ // Подключаем пакет для минификации CSS
 //const rename       = require('gulp-rename'), // Подключаем библиотеку для переименования файлов
-//const imagemin     = require('gulp-imagemin'), // Подключаем библиотеку для работы с изображениями
 //const pngquant     = require('imagemin-pngquant'), // Подключаем библиотеку для работы с png
 //const cache        = require('gulp-cache'), // Подключаем библиотеку кеширования
 
@@ -24,7 +31,7 @@ function css() {
       .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError)) // Преобразуем Sass в CSS посредством
       .pipe(autoprefixer(['last 10 versions', '> 1%', 'ie 9', 'ie 10'], { cascade: true })) // Создаем префиксы
       .pipe(sourcemaps.write('.'))
-      .pipe(dest('app/css')); 
+      .pipe(dest('app/css'));
 }
 
 function html() {
@@ -36,7 +43,7 @@ function html() {
       .pipe(htmlbeautify({
          "indent_with_tabs": true,//отступу табами
          "max_preserve_newlines": 0,//максимальное число новых строк
-       }))
+      }))
       .pipe(dest('app'));
 }
 
@@ -45,11 +52,47 @@ function js() {
       .pipe(dest('app/js'));
 }
 
-function clear(){
+function images() {
+   return src('dist/images/**/*.{gif,png,jpg}')
+      .pipe(cache(imagemin([
+         //png
+         imageminPngquant({
+            speed: 1,
+            quality: [0.95, 1] //lossy settings
+         }),
+         imageminZopfli({
+            more: true
+            // iterations: 50 // very slow but more effective
+         }),
+         //gif very light lossy, use only one of gifsicle or Giflossy
+         imageminGiflossy({
+            optimizationLevel: 3,
+            optimize: 3, //keep-empty: Preserve empty transparent frames
+            lossy: 2
+         }),
+         //svg
+         imagemin.svgo({
+            plugins: [{
+               removeViewBox: false
+            }]
+         }),
+         //jpg lossless
+         imagemin.mozjpeg({
+            progressive: true
+         }),
+         //jpg very light lossy, use vs jpegtran
+         imageminMozjpeg({
+            quality: 90
+         })
+      ])))
+      .pipe(dest('app/images'));
+}
+
+function clear() {
    return del('app');
 }
 
-function serve(){
+function serve() {
    browserSync.init({
       server: {
          baseDir: 'app', // Директория для сервера - app
@@ -63,6 +106,6 @@ function serve(){
    watch('dist/js/**/*.js', series(js)).on('change', browserSync.reload);
 }
 
-
-exports.build = series(clear, css, html, js);
-exports.default = series(clear, css, html, js, serve);
+exports.images = images;
+exports.build = series(clear, css, html, js, images);
+exports.default = series(clear, css, html, js, images, serve);
