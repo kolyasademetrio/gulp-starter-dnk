@@ -1,10 +1,10 @@
-@import 'base/reset';
-@import 'base/fonts';
+@import 'utils/reset';
+@import 'utils/fonts';
 
-@import 'layout/main';
+@import 'layouts/main';
 
-@import 'layout/header';
+@import 'layouts/header';
 
-@import 'layout/content';
+@import 'layouts/slider';
 
-@import 'layout/footer';
+@import 'layouts/footer';
